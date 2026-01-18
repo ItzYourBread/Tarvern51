@@ -6,3 +6,4 @@ const apiKey = require('../middlewares/apiKey.middleware');
 router.post('/links', apiKey, apiController.createLink);
 
 module.exports = router;
+

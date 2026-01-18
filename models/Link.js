@@ -11,9 +11,16 @@ const LinkSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    category: {
+    directUrl: {
       type: String,
       required: true
+    },
+    category: {
+      type: String,
+      required: true,
+      enum: ['OF-Models', 'Leaks-Vids', 'Amateur', 'NSFW'],
+      default: 'NSFW',
+      trim: true
     }
   },
   { timestamps: true }
@@ -22,3 +29,4 @@ const LinkSchema = new mongoose.Schema(
 LinkSchema.index({ title: 'text', category: 'text' });
 
 module.exports = mongoose.model('Link', LinkSchema);
+

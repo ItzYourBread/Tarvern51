@@ -1,196 +1,429 @@
-/* RESET */
+/* ===============================
+   1. VARIABLES & RESET
+================================ */
+:root {
+  --bg-body: #0a0a0a;       /* Darker, premium black */
+  --bg-card: #161616;       /* Slightly lighter card bg */
+  --bg-card-hover: #1e1e1e;
+  --border-color: #333;
+  --text-main: #ffffff;
+  --text-dim: #a0a0a0;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BASE */
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #1f2224;
-  color: #eaeaea;
-}
-
-/* LAYOUT */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
-
-/* SITE INFO */
-.site-info {
-  margin-bottom: 20px;
-}
-
-.site-info h2 {
-  font-size: 22px;
-  margin-bottom: 6px;
-}
-
-.site-info p {
-  font-size: 14px;
-  color: #aaa;
-}
-
-/* LINKS */
-.links-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* LINK CARD */
-.link-card {
-  background: #2f3336;
-  color: #8a8a8a;
-  border-radius: 10px;
-  padding: 16px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 14px;
-}
-
-/* LEFT */
-.link-left h3 {
-  font-size: 16px;
-  margin-top: 6px;
-}
-
-.category {
-  font-size: 12px;
-  font-weight: 600;
-  color: #b5b5b5;
-}
-
-/* BUTTON */
-.visit-btn {
-  background: #0e0e0e;
-  color: #ffffff;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-.visit-btn:hover {
-  opacity: 0.9;
-}
-
-/* EMPTY */
-.empty-state {
-  padding: 20px;
-  text-align: center;
-  color: #aaa;
-  border: 1px dashed #444;
-  border-radius: 8px;
-}
-
-/* MOBILE */
-@media (max-width: 640px) {
-  .link-card {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .visit-btn {
-    width: 100%;
-    text-align: center;
-  }
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding-bottom: 50px;
 }
 
 /* ===============================
-   TOP HIGHLIGHT BOX
+   2. LAYOUT & CONTAINER
+================================ */
+.container {
+  max-width: 1000px; /* Tighter width for better reading */
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+/* ===============================
+   3. HIGHLIGHT BOX (The "All Channels" Area)
 ================================ */
 .highlight-box {
-  background: #25292c;
-  border-radius: 14px;
-  padding: 22px;
-  margin-bottom: 26px;
+  background: linear-gradient(145deg, #1a1a1a, #111);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
   text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Adds a subtle top glow */
+.highlight-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
 }
 
 .highlight-title {
-  margin-bottom: 16px;
+  font-size: 24px;
   font-weight: 800;
-  letter-spacing: 0.6px;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
 }
 
-/* BIG GREEN */
-.all-channels {
-  font-size: 26px;
-  color: #7CFF8A;
-}
-
-/* LINKS ROW */
 .highlight-links {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-/* TELEGRAM (ORANGE, MEDIUM) */
-.highlight-link.telegram {
-  font-size: 18px;
+.highlight-link {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
   font-weight: 700;
-  color: #ff9f43;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
-/* MAIN LINK (SMALLER, BLUE, BOLD) */
-.highlight-link.main-link {
-  font-size: 16px;
-  font-weight: 800;
-  color: #3b82f6;
+.highlight-link:hover {
+  transform: translateY(-2px);
 }
 
+.telegram {
+  background: rgba(42, 171, 238, 0.1);
+  color: #2aabee;
+  border: 1px solid rgba(42, 171, 238, 0.3);
+}
+
+.main-link {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
 
 /* ===============================
-   INFORMATION BOX
+   4. INFO BOX
 ================================ */
 .info-box {
-  background: #202427;
-  border: 1px solid #333;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 20px;
-  margin-bottom: 30px;
+  border-left: 4px solid var(--accent-blue); /* Blue accent line on left */
 }
 
 .info-box h2 {
-  font-size: 20px;
-  margin-bottom: 12px;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .info-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+}
+
+.info-list li {
+  color: var(--text-dim);
   font-size: 14px;
-  color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .info-list a {
-  color: #3b82f6;
+  color: var(--accent-blue);
+  text-decoration: none;
   font-weight: 600;
 }
 
+.info-list a:hover {
+  text-decoration: underline;
+}
+
 /* ===============================
-   MOBILE REFINEMENTS
+   5. CATEGORY HEADERS
+================================ */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #222;
+}
+
+.category-header h2 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* See More Button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.toggle-btn:hover { opacity: 0.8; }
+
+/* ===============================
+   6. LINK GRID (THE BIG CHANGE)
+================================ */
+.links-wrapper {
+  display: grid;
+  /* Auto-fit: Creates columns based on available width */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.link-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column; /* Better for content structure */
+  justify-content: space-between;
+  gap: 15px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Hover Effect: Glow and Lift */
+.link-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-card-hover);
+  border-color: #444;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.link-left h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* THE BRANDED VISIT BUTTON */
+.visit-btn.mega-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  /* Mega Red Gradient */
+  background: linear-gradient(135deg, #d92128 0%, #a91a1f 100%);
+  color: #ffffff;
+  
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(217, 33, 40, 0.2);
+}
+
+.visit-btn.mega-style:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #eb262d 0%, #c11d23 100%);
+  box-shadow: 0 6px 20px rgba(217, 33, 40, 0.4); /* Glow effect */
+}
+
+/* Logo & Icon Spacing */
+.mega-logo {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: auto; /* Pushes arrow to the far right */
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.visit-btn.mega-style:hover .arrow-icon {
+  transform: translateX(3px); /* Arrow moves slightly on hover */
+}
+
+/* text alignment */
+.visit-btn.mega-style span {
+  letter-spacing: 0.5px;
+}
+
+/* Hidden links logic */
+.hidden-link {
+  display: none !important;
+}
+
+/* LINK META (Date & Time) */
+.link-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px; /* Space below title */
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim); /* Grayish color */
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Meta Icons */
+.meta-item svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--accent-blue); /* Icons pop in blue */
+}
+
+/* Card Adjustment */
+.link-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-left h3 {
+  margin-bottom: 0; /* Let meta handle the spacing */
+}
+
+/* ===============================
+   MODERN PAGINATION
+================================ */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 20px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card); /* Matches your cards */
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  gap: 8px;
+}
+
+/* Base Button Style */
+.pag-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+/* Hover Effect */
+.pag-btn:not(.disabled):hover {
+  background: var(--bg-card-hover);
+  border-color: #444;
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+}
+
+/* Disabled State */
+.pag-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* Page Counter Badge */
+.page-counter {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace; /* Looks "techy" */
+  font-weight: 700;
+}
+
+.current-page {
+  color: var(--accent-blue);
+  font-size: 16px;
+}
+
+.sep {
+  margin: 0 8px;
+  color: #555;
+  font-weight: 300;
+}
+
+.total-pages {
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+/* Mobile Tweak */
+@media (max-width: 640px) {
+  .pagination-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .pag-btn span {
+    display: none; /* Hide "Prev/Next" text on small mobile, keep icons */
+  }
+  
+  .pag-btn {
+    padding: 10px;
+  }
+}
+
+/* ===============================
+   7. MOBILE OPTIMIZATION
 ================================ */
 @media (max-width: 640px) {
-  .all-channels {
-    font-size: 22px;
+  .container {
+    padding: 20px 15px;
+  }
+  
+  /* Switch grid to 1 column on mobile */
+  .links-wrapper {
+    grid-template-columns: 1fr; 
   }
 
-  .highlight-link.telegram {
-    font-size: 16px;
+  .highlight-links {
+    flex-direction: column;
   }
 
-  .highlight-link.main-link {
-    font-size: 15px;
+  .highlight-link {
+    width: 100%;
+    text-align: center;
   }
 }
