@@ -427,3 +427,104 @@ section {
     text-align: center;
   }
 }
+
+/* ===============================
+   SMART REDIRECT PAGE
+================================ */
+.redirect-card {
+  max-width: 520px;
+  margin: 80px auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 35px 30px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.redirect-icon {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.redirect-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.redirect-text {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.redirect-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.redirect-btn {
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Primary (Direct link) */
+.redirect-btn.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #d92128 0%, #a91a1f 100%);
+  color: #ffffff;
+
+}
+
+.redirect-btn.primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #eb262d 0%, #c11d23 100%);
+  box-shadow: 0 6px 20px rgba(217, 33, 40, 0.4); /* Glow effect */
+}
+
+/* Secondary (Home) */
+.redirect-btn.secondary {
+  background: rgba(42, 171, 238, 0.1);
+  color: #2aabee;
+  border: 1px solid rgba(42, 171, 238, 0.3);
+}
+
+.redirect-btn.secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Loader text */
+.redirect-loader {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--text-dim);
+  opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .redirect-card {
+    margin: 40px 15px;
+    padding: 28px 20px;
+  }
+
+  .redirect-actions {
+    flex-direction: column;
+  }
+
+  .redirect-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

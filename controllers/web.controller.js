@@ -101,3 +101,14 @@ exports.category = async (req, res) => {
     });
   }
 };
+
+exports.smartRedirect = async (req, res) => {
+  const link = await Link.findById(req.params.id);
+  if (!link) return res.status(404).send('Link not found');
+
+  res.render('pages/smart-redirect', {
+    smartUrl: 'https://rtouchingthewaterw.com?A6dBN=1235328',
+    realUrl: link.url,
+    homeUrl: '/'
+  });
+};
